@@ -1,3 +1,7 @@
+<div align="center">
+<img src="./docs/_static/basalcell_logo_demo.svg" alt="logo" width="500" title="logo">
+</div>
+
 # BasalCellDemo
 [<img src="https://img.shields.io/badge/DOI-WIP-FAB70C?style=flat&logo=doi">]()
 [<img src="https://img.shields.io/badge/PMID-WIP-326599?style=flat&logo=pubmed">]()
@@ -12,18 +16,14 @@ A demonstration of the BasalCell ecosystem through a simple scRNA-seq data analy
 
 
 ## Project Summary
-1. Write
-2. Down
-3. What
-4. You
-5. Did
-6. Here
+1. scRNA-seq data preprocessing and automated annotation with Python packages
+2. Manual annotation based on DEGs and GO terms and multi-label visualization with R packages
 
 ## Copyright of Data
-***describe the copyright and licensing of your dataset(s)***
+- the PBMC 3k dataset: this dataset was provided by [10x Genomics](https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0)
 
 ### Data Installation
-***describe how to install your dataset(s)***
+- the PBMC 3k dataset: download via `01_preprocessing_with_python.ipynb`
 
 ## Project Directory Tree
 ```bash

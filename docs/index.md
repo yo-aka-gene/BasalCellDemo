@@ -1,12 +1,15 @@
+<div align="center">
+<img src="./_static/basalcell_logo_demo.svg" alt="logo" width="500" title="logo">
+</div>
+
 # Welcome to BasalCellDemo's documentation!
-## Add your Analysis Code Gallery headder as follows:
 ```{toctree}
 :maxdepth: 2
 :caption: Analysis Code Gallery
 
 notebooks
 ```
-## Add API reference headder for your auxiliary code created in `basalcelldemo_tools` as follows:
+
 ```{toctree}
 :maxdepth: 2
 :caption: Auxiliary Python Scripts

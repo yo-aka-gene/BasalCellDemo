@@ -1,5 +1,5 @@
 <div align="center">
-<img src="../_static/default_logo.png" alt="graphical abstract" width="300" height="300" title="graphical abstract">
+<img src="../_static/basalcell_logo_demo.svg" alt="logo" width="500" title="logo">
 </div>
 
 # Welcome to BasalCellDemo's documentation for R API!
