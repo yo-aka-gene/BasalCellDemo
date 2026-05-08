@@ -45,7 +45,7 @@ napoleon_include_init_with_doc = True
 # -- Options for HTML output -------------------------------------------------
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
-html_logo = "_static/default_logo.png"
+html_logo = "_static/basalcell_logo.svg"
 
 html_theme_options = {
     "navigation_depth": 5,
