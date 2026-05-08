@@ -35,3 +35,4 @@ dependencies:
   - bioconductor-org.hs.eg.db
   - r-tidyverse
   - bioconductor-genomeinfodbdata
+  - bioconductor-go.db
