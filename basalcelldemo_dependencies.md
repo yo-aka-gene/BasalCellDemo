@@ -1,6 +1,6 @@
 # BasalCellDemo
 ## Dependency Info
-- this file was generated at: 23:56:14, May 08, 2026
+- this file was generated at: 00:51:31, May 09, 2026
 
 | name | alias | version | required_version | language | platform | installation |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -11,12 +11,14 @@
 | llvmlite | llvmlite | 0.47.0 | None | Python | any | poetry |
 | numba | numba | 0.65.1 | None | Python | any | poetry |
 | pynndescent | pynndescent | 0.6.0 | ^0.6.0 | Python | any | poetry |
-| python | python | 3.12.13 | =3.12 | Python | linux-64 | Mamba |
-| python | python | 3.12.13 | =3.12 | Python | osx-64 | Mamba |
 | python | python | 3.12.13 | =3.12 | Python | osx-arm64 | Mamba |
+| python | python | 3.12.13 | =3.12 | Python | osx-64 | Mamba |
+| python | python | 3.12.13 | =3.12 | Python | linux-64 | Mamba |
 | scanpy | scanpy | 1.12.1 | ^1.12.1 | Python | any | poetry |
 | scikit-image | scikit-image | 0.26.0 | ^0.26.0 | Python | any | poetry |
 | bioconductor-complexheatmap | ComplexHeatmap | 2.22.0 | None | R | any | Mamba |
+| bioconductor-go.db | GO.db | 3.20.0 | None | R | any | Mamba |
+| bioconductor-genomeinfodbdata | GenomeInfoDbData | 1.2.13 | None | R | any | Mamba |
 | r-base | R | 4.4.3 | =4.4 | R | linux-64 | Mamba |
 | r-base | R | 4.4.3 | =4.4 | R | osx-64 | Mamba |
 | r-base | R | 4.4.3 | =4.4 | R | osx-arm64 | Mamba |
