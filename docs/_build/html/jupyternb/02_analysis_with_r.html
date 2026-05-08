@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>02: GO Analysis with R &mdash; BasalCellDemo 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="basalcelldemo_tools" href="../auxiliary_api/modules.html" />
+    <link rel="prev" title="01: Preprocessing the PBMC 3k dataset with Python" href="01_preprocessing_with_python.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+          <a href="../index.html">
+
+              <img src="../_static/basalcell_logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Analysis Code Gallery</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../notebooks.html">Analyses Code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../notebooks.html#preprocessing-and-automated-annotation-with-python">Preprocessing and Automated Annotation with Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../notebooks.html#manual-annotation-and-label-visualization-with-r">Manual Annotation and Label Visualization with R</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">02: GO Analysis with R</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#1.-Manual-Annotation">1. Manual Annotation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#1-1.-Enrichment-Analysis">1-1. Enrichment Analysis</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#1-2.-Manual-Annotation">1-2. Manual Annotation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#2.-Summary">2. Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Auxiliary Python Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../auxiliary_api/modules.html">basalcelldemo_tools</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BasalCellDemo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../notebooks.html">Analyses Code</a></li>
+      <li class="breadcrumb-item active">02: GO Analysis with R</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/jupyternb/02_analysis_with_r.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <section id="02:-GO-Analysis-with-R">
+<h1>02: GO Analysis with R<a class="headerlink" href="#02:-GO-Analysis-with-R" title="Link to this heading"></a></h1>
+<p><strong>NOTE</strong>: Run code in <code class="docutils literal notranslate"><span class="pre">01_preprocessing_with_python.ipynb</span></code> first to generate essential data files</p>
+<ol class="arabic simple">
+<li><p>Manual Annotation</p></li>
+<li><p>Summary</p></li>
+</ol>
+<section id="1.-Manual-Annotation">
+<h2>1. Manual Annotation<a class="headerlink" href="#1.-Manual-Annotation" title="Link to this heading"></a></h2>
+<section id="1-1.-Enrichment-Analysis">
+<h3>1-1. Enrichment Analysis<a class="headerlink" href="#1-1.-Enrichment-Analysis" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressPackageStartupMessages</span><span class="p">({</span>
+<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">arrow</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">clusterProfiler</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">ComplexHeatmap</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">org.Hs.eg.db</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="w">    </span><span class="n">devtools</span><span class="o">::</span><span class="nf">load_all</span><span class="p">(</span><span class="s">&quot;basalcelldemo_rtools&quot;</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+<span class="ansi-cyan-fg">ℹ</span> Loading <span class="ansi-blue-fg">basalcelldemo</span>
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">degs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_parquet</span><span class="p">(</span><span class="s">&quot;data/degs.pq&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">group</span><span class="p">))))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">degs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A tibble: 6 × 4</caption>
+<thead>
+    <tr><th scope=col>group</th><th scope=col>names</th><th scope=col>logfoldchanges</th><th scope=col>pvals_adj</th></tr>
+    <tr><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>0</td><td>LTB </td><td>2.279514</td><td>2.098176e-85</td></tr>
+    <tr><td>0</td><td>IL32</td><td>2.386184</td><td>3.698173e-74</td></tr>
+    <tr><td>0</td><td>LDHB</td><td>1.743769</td><td>3.924835e-66</td></tr>
+    <tr><td>0</td><td>IL7R</td><td>2.312467</td><td>1.811423e-63</td></tr>
+    <tr><td>0</td><td>CD3D</td><td>1.951366</td><td>2.826500e-49</td></tr>
+    <tr><td>0</td><td>CD3E</td><td>1.661288</td><td>2.701294e-38</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">comp_go</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">compareCluster</span><span class="p">(</span>
+<span class="w">    </span><span class="n">geneClusters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">group</span><span class="p">,</span>
+<span class="w">    </span><span class="n">data</span><span class="w">　</span><span class="o">=</span><span class="w">　</span><span class="n">degs</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fun</span><span class="w">　</span><span class="o">=</span><span class="w">　</span><span class="s">&quot;enrichGO&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">OrgD</span><span class="w">　</span><span class="o">=</span><span class="w"> </span><span class="n">org.Hs.eg.db</span><span class="p">,</span>
+<span class="w">    </span><span class="n">keyType</span><span class="w">　</span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SYMBOL&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ont</span><span class="w">　</span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BP&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pAdjustMethod</span><span class="w">　</span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BH&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pvalueCutoff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.05</span><span class="p">,</span>
+<span class="w">    </span><span class="n">qvalueCutoff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.05</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">figsize</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">)</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">figsize</span><span class="o">$</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">figsize</span><span class="o">$</span><span class="n">height</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">dotplot</span><span class="p">(</span><span class="n">comp_go</span><span class="p">,</span><span class="w"> </span><span class="n">showCategory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span>
+<span class="w">    </span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">),</span>
+<span class="w">    </span><span class="n">axis.text.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GO Enrichment across Clusters&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Leiden&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Biological Processes&quot;</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+
+<span class="nf">ggsave</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;output/go.pdf&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fig</span><span class="p">,</span>
+<span class="w">    </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">figsize</span><span class="o">$</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">figsize</span><span class="o">$</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">units</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;in&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Warning message:
+“`aes_string()` was deprecated in ggplot2 3.0.0.
+<span class="ansi-cyan-fg">ℹ</span> Please use tidy evaluation idioms with `aes()`.
+<span class="ansi-cyan-fg">ℹ</span> See also `vignette(&#34;ggplot2-in-packages&#34;)` for more information.
+<span class="ansi-cyan-fg">ℹ</span> The deprecated feature was likely used in the <span class="ansi-blue-fg">enrichplot</span> package.
+  Please report the issue at
+  <span class="ansi-blue-fg">&lt;https://github.com/GuangchuangYu/enrichplot/issues&gt;</span>.”
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/jupyternb_02_analysis_with_r_5_1.png" class="no-scaled-link" height="720" src="../_images/jupyternb_02_analysis_with_r_5_1.png" width="480" />
+</div>
+</div>
+</section>
+<section id="1-2.-Manual-Annotation">
+<h3>1-2. Manual Annotation<a class="headerlink" href="#1-2.-Manual-Annotation" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">annotations</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_parquet</span><span class="p">(</span><span class="s">&quot;data/annotations.pq&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A tibble: 6 × 6</caption>
+<thead>
+    <tr><th scope=col>index</th><th scope=col>leiden</th><th scope=col>celltypist_majority_voting</th><th scope=col>annotation</th><th scope=col>leiden_colors</th><th scope=col>celltypist_colors</th></tr>
+    <tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>AAACATACAACCAC-1</td><td>3</td><td>Tcm/Naive helper T cells </td><td>MAIT cells                 </td><td>#d62728</td><td>#ffff00</td></tr>
+    <tr><td>AAACATTGAGCTAC-1</td><td>2</td><td>B cells                  </td><td>B cells                    </td><td>#2ca02c</td><td>#1ce6ff</td></tr>
+    <tr><td>AAACATTGATCAGC-1</td><td>0</td><td>Tcm/Naive helper T cells </td><td>Tcm/Naive helper T cells #1</td><td>#1f77b4</td><td>#ffff00</td></tr>
+    <tr><td>AAACCGTGCTTCCG-1</td><td>5</td><td>Non-classical monocytes  </td><td>Non-classical monocytes    </td><td>#8c564b</td><td>#ff34ff</td></tr>
+    <tr><td>AAACGCACTGGTAC-1</td><td>0</td><td>Tcm/Naive helper T cells </td><td>Tcm/Naive helper T cells #1</td><td>#1f77b4</td><td>#ffff00</td></tr>
+    <tr><td>AAACGCTGACCAGT-1</td><td>3</td><td>Tem/Trm cytotoxic T cells</td><td>MAIT cells                 </td><td>#d62728</td><td>#ff4a46</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">manual_annot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Naïve/Memory T cells #1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Naïve/Memory T cells #2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;B cells&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Cytotoxic T cells&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;4&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Monocytes #1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;5&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Monocytes #2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;6&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Undefined&quot;</span>
+<span class="p">)</span>
+
+<span class="n">annotations</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">annotations</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">    </span><span class="nf">mutate</span><span class="p">(</span>
+<span class="w">        </span><span class="n">manual_annotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manual_annot</span><span class="p">[</span><span class="n">leiden</span><span class="p">]</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A tibble: 6 × 7</caption>
+<thead>
+    <tr><th scope=col>index</th><th scope=col>leiden</th><th scope=col>celltypist_majority_voting</th><th scope=col>annotation</th><th scope=col>leiden_colors</th><th scope=col>celltypist_colors</th><th scope=col>manual_annotation</th></tr>
+    <tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>AAACATACAACCAC-1</td><td>3</td><td>Tcm/Naive helper T cells </td><td>MAIT cells                 </td><td>#d62728</td><td>#ffff00</td><td>Cytotoxic T cells      </td></tr>
+    <tr><td>AAACATTGAGCTAC-1</td><td>2</td><td>B cells                  </td><td>B cells                    </td><td>#2ca02c</td><td>#1ce6ff</td><td>B cells                </td></tr>
+    <tr><td>AAACATTGATCAGC-1</td><td>0</td><td>Tcm/Naive helper T cells </td><td>Tcm/Naive helper T cells #1</td><td>#1f77b4</td><td>#ffff00</td><td>Naïve/Memory T cells #1</td></tr>
+    <tr><td>AAACCGTGCTTCCG-1</td><td>5</td><td>Non-classical monocytes  </td><td>Non-classical monocytes    </td><td>#8c564b</td><td>#ff34ff</td><td>Monocytes #2           </td></tr>
+    <tr><td>AAACGCACTGGTAC-1</td><td>0</td><td>Tcm/Naive helper T cells </td><td>Tcm/Naive helper T cells #1</td><td>#1f77b4</td><td>#ffff00</td><td>Naïve/Memory T cells #1</td></tr>
+    <tr><td>AAACGCTGACCAGT-1</td><td>3</td><td>Tem/Trm cytotoxic T cells</td><td>MAIT cells                 </td><td>#d62728</td><td>#ff4a46</td><td>Cytotoxic T cells      </td></tr>
+</tbody>
+</table></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="2.-Summary">
+<h2>2. Summary<a class="headerlink" href="#2.-Summary" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">expressions</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_parquet</span><span class="p">(</span><span class="s">&quot;data/expressions.pq&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">expressions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A tibble: 6 × 915</caption>
+<thead>
+    <tr><th scope=col>index</th><th scope=col>LTB</th><th scope=col>IL32</th><th scope=col>LDHB</th><th scope=col>IL7R</th><th scope=col>CD3D</th><th scope=col>CD3E</th><th scope=col>CD2</th><th scope=col>JUN</th><th scope=col>TMEM66</th><th scope=col>⋯</th><th scope=col>KLRF1</th><th scope=col>C5orf56</th><th scope=col>SH2D1B</th><th scope=col>GPR56</th><th scope=col>SRI</th><th scope=col>ATP6AP2</th><th scope=col>PDIA3</th><th scope=col>PLEKHF1</th><th scope=col>JAK1</th><th scope=col>leiden</th></tr>
+    <tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>AAACATACAACCAC-1</td><td>3.075915</td><td>0.000000</td><td>3.075915</td><td>2.595391</td><td>2.864242</td><td>2.226555</td><td>0.000000</td><td>3.838879</td><td>1.635873</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1.635873</td><td>0.000000</td><td>1.635873</td><td>0</td><td>0.000000</td><td>3</td></tr>
+    <tr><td>AAACATTGAGCTAC-1</td><td>3.154436</td><td>0.000000</td><td>2.583235</td><td>1.625305</td><td>0.000000</td><td>0.000000</td><td>0.000000</td><td>0.000000</td><td>0.000000</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1.111852</td><td>0.000000</td><td>0.000000</td><td>0</td><td>1.111852</td><td>2</td></tr>
+    <tr><td>AAACATTGATCAGC-1</td><td>2.618163</td><td>3.817422</td><td>3.387729</td><td>1.429744</td><td>3.489706</td><td>1.995416</td><td>2.826612</td><td>3.745004</td><td>2.354503</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000000</td><td>1.429744</td><td>0.000000</td><td>0</td><td>0.000000</td><td>0</td></tr>
+    <tr><td>AAACCGTGCTTCCG-1</td><td>0.000000</td><td>0.000000</td><td>0.000000</td><td>0.000000</td><td>0.000000</td><td>0.000000</td><td>1.566387</td><td>1.566387</td><td>1.566387</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000000</td><td>0.000000</td><td>1.566387</td><td>0</td><td>0.000000</td><td>5</td></tr>
+    <tr><td>AAACGCACTGGTAC-1</td><td>2.970047</td><td>3.507431</td><td>2.699321</td><td>0.000000</td><td>1.726902</td><td>2.326928</td><td>0.000000</td><td>0.000000</td><td>1.726902</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000000</td><td>0.000000</td><td>0.000000</td><td>0</td><td>0.000000</td><td>0</td></tr>
+    <tr><td>AAACGCTGACCAGT-1</td><td>2.694590</td><td>1.722734</td><td>1.722734</td><td>2.322352</td><td>2.322352</td><td>0.000000</td><td>0.000000</td><td>0.000000</td><td>2.694590</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0.000000</td><td>1.722734</td><td>0.000000</td><td>0</td><td>0.000000</td><td>3</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">top_degs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_parquet</span><span class="p">(</span><span class="s">&quot;data/top_degs.pq&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">top_degs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A tibble: 6 × 3</caption>
+<thead>
+    <tr><th scope=col>group</th><th scope=col>names</th><th scope=col>leiden_colors</th></tr>
+    <tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>0</td><td>LTB </td><td>#1f77b4</td></tr>
+    <tr><td>0</td><td>IL32</td><td>#1f77b4</td></tr>
+    <tr><td>0</td><td>LDHB</td><td>#1f77b4</td></tr>
+    <tr><td>0</td><td>IL7R</td><td>#1f77b4</td></tr>
+    <tr><td>0</td><td>CD3D</td><td>#1f77b4</td></tr>
+    <tr><td>0</td><td>CD3E</td><td>#1f77b4</td></tr>
+</tbody>
+</table></div>
+</div>
+<ul class="simple">
+<li><p>creating sorted <code class="docutils literal notranslate"><span class="pre">setNames</span></code> with an original function <code class="docutils literal notranslate"><span class="pre">sorted_setnames</span></code> to configure legends in <code class="docutils literal notranslate"><span class="pre">ComplexHeatmap</span></code></p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">auto_colors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sorted_setnames</span><span class="p">(</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">leiden_colors</span><span class="p">,</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">annotation</span><span class="p">,</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">leiden</span>
+<span class="p">)</span>
+
+<span class="n">celltypist_colors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sorted_setnames</span><span class="p">(</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">celltypist_colors</span><span class="p">,</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">celltypist_majority_voting</span><span class="p">,</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">leiden</span>
+<span class="p">)</span>
+
+<span class="n">manu_colors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sorted_setnames</span><span class="p">(</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">leiden_colors</span><span class="p">,</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">manual_annotation</span><span class="p">,</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">leiden</span>
+<span class="p">)</span>
+
+<span class="n">leiden_colors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sorted_setnames</span><span class="p">(</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">leiden_colors</span><span class="p">,</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">leiden</span><span class="p">,</span>
+<span class="w">    </span><span class="n">annotations</span><span class="o">$</span><span class="n">leiden</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ha</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rowAnnotation</span><span class="p">(</span>
+<span class="w">    </span><span class="n">CellTypist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">annotations</span><span class="o">$</span><span class="n">celltypist_majority_voting</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Automated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">annotations</span><span class="o">$</span><span class="n">annotation</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Manual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">annotations</span><span class="o">$</span><span class="n">manual_annotation</span><span class="p">,</span>
+<span class="w">    </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
+<span class="w">        </span><span class="n">CellTypist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">celltypist_colors</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Automated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">auto_colors</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Manual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manu_colors</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="n">annotation_legend_param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
+<span class="w">        </span><span class="n">CellTypist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">celltypist_colors</span><span class="p">)),</span>
+<span class="w">        </span><span class="n">Automated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">auto_colors</span><span class="p">)),</span>
+<span class="w">        </span><span class="n">Manual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">manu_colors</span><span class="p">))</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">va</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">columnAnnotation</span><span class="p">(</span>
+<span class="w">    </span><span class="n">LeidenDEGs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top_degs</span><span class="o">$</span><span class="n">group</span><span class="p">,</span>
+<span class="w">    </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
+<span class="w">        </span><span class="n">LeidenDEGs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">leiden_colors</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="n">annotation_legend_param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
+<span class="w">        </span><span class="n">LeidenDEGs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">leiden_colors</span><span class="p">))</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">mat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">expressions</span><span class="p">[,</span><span class="w"> </span><span class="n">top_degs</span><span class="o">$</span><span class="n">names</span><span class="p">])</span>
+<span class="nf">rownames</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">expressions</span><span class="o">$</span><span class="n">index</span>
+
+<span class="n">barcode_sorted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">annotations</span><span class="o">$</span><span class="n">leiden</span><span class="p">,</span><span class="w"> </span><span class="n">annotations</span><span class="o">$</span><span class="n">celltypist_majority_voting</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">figsize</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">9</span><span class="p">)</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">figsize</span><span class="o">$</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">figsize</span><span class="o">$</span><span class="n">height</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Heatmap</span><span class="p">(</span>
+<span class="w">    </span><span class="n">mat</span><span class="p">,</span><span class="w"> </span><span class="n">top_annotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">va</span><span class="p">,</span><span class="w"> </span><span class="n">right_annotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ha</span><span class="p">,</span><span class="w"> </span><span class="n">use_raster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">show_row_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">row_order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">barcode_sorted</span><span class="p">,</span><span class="w"> </span><span class="n">cluster_columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;complexheatmap&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">heatmap_legend_param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ln(RP10k+1)&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nf">pdf</span><span class="p">(</span><span class="s">&quot;output/complexheatmap.pdf&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">figsize</span><span class="o">$</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">figsize</span><span class="o">$</span><span class="n">height</span><span class="p">)</span>
+<span class="nf">draw</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="nf">dev.off</span><span class="p">()</span>
+
+<span class="nf">draw</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+&#39;magick&#39; package is suggested to install to give better rasterization.
+
+Set `ht_opt$message = FALSE` to turn off this message.
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<strong>agg_record_aa30731636b9:</strong> 2</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/jupyternb_02_analysis_with_r_15_2.png" class="no-scaled-link" height="540" src="../_images/jupyternb_02_analysis_with_r_15_2.png" width="720" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="01_preprocessing_with_python.html" class="btn btn-neutral float-left" title="01: Preprocessing the PBMC 3k dataset with Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../auxiliary_api/modules.html" class="btn btn-neutral float-right" title="basalcelldemo_tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>
