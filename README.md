@@ -10,7 +10,7 @@
 [<img src="https://img.shields.io/badge/Code_Examples-Jupyter_Notebook-F37626?style=flat&logo=jupyter">](https://basalcelldemo.readthedocs.io/en/latest/notebooks.html)
 [<img src="https://img.shields.io/badge/GitHub-yo--aka--gene/BasalCellDemo-181717?style=flat&logo=github">](https://github.com/yo-aka-gene/BasalCellDemo)
 <div align="center">
-<img src="./docs/_static/default_logo.png" alt="graphical abstract" width="300" height="300" title="graphical abstract">
+<img src="./docs/_static/schematic.svg" alt="graphical abstract" width="300" height="300" title="graphical abstract">
 </div>
 A demonstration of the BasalCell ecosystem through a simple scRNA-seq data analysis.
 
