@@ -29,3 +29,7 @@ dependencies:
   - r-knitr
   - r-biocmanager
   - bioconductor-biocversion
+  - r-arrow
+  - bioconductor-clusterprofiler
+  - bioconductor-complexheatmap
+  - bioconductor-org.hs.eg.db
