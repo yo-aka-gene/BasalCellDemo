@@ -242,6 +242,9 @@ PYDEV_CORE := ipykernel ipywidgets jupyterlab jupyter-resource-usage \
 define ADD_R_LOGIC
 #!/bin/bash
 set -e
+
+trap 'mv .Rprofile_proxy_bak .Rprofile_proxy 2>/dev/null || true' EXIT
+
 conda_lib="$$CONDA_PREFIX/lib/R/library"
 export RENV_CONFIG_SANDBOX_ENABLED="false"
 
@@ -258,12 +261,16 @@ try_mamba_install() {
 	if mamba install --dry-run -q -y -c "$$channel" "$$target_pkg" >/dev/null 2>&1; then
 		echo "--> Found $$3 in $$channel. Attempting to install..."
 
+		mv .Rprofile_proxy .Rprofile_proxy_bak 2>/dev/null || true
+
 		if mamba install -y -c "$$channel" "$$target_pkg"; then
+			mv .Rprofile_proxy_bak .Rprofile_proxy 2>/dev/null || true
 			if ! grep -q -- "- $$target_pkg" environment.yml; then
 				yq -y -i ".dependencies += [\"$$target_pkg\"]" environment.yml
 			fi
 			return 0
 		fi
+		mv .Rprofile_proxy_bak .Rprofile_proxy 2>/dev/null || true
 	fi
 	return 1
 }
