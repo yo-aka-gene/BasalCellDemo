@@ -33,3 +33,4 @@ dependencies:
   - bioconductor-clusterprofiler
   - bioconductor-complexheatmap
   - bioconductor-org.hs.eg.db
+  - r-tidyverse
