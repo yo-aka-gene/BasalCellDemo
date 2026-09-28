@@ -6,4 +6,4 @@ Description: A demonstration of the BasalCell ecosystem through a simple scRNA-s
 Encoding: UTF-8
 License: UNLICENSED
 URL: https://basalcelldemo.readthedocs.io/en/latest/r_api/
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
