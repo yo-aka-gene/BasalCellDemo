@@ -1,31 +1,18 @@
 Analyses Code
 =============
 
-Here's your example for adding Analysis codes with the nbgallery style!
-
-If you see this message without any thumbnails, check `docs/notebook.rst` out!
-
-Headder #1
-----------
+Preprocessing and Automated Annotation with Python
+--------------------------------------------------
 
 .. nbgallery::
 
-    jupyternb/<your_ipynb_basebame_1_without_file_extension>
+    jupyternb/01_preprocessing_with_python
 
 
 
-Headder #2 with a very very long headder title
-----------------------------------------------
-
-.. nbgallery::
-
-    jupyternb/<your_ipynb_basebame_2_without_file_extension>
-
-
-Make sure you draw a line with exact the same length under the headder
-----------------------------------------------------------------------
+Manual Annotation and Label Visualization with R
+------------------------------------------------
 
 .. nbgallery::
 
-    jupyternb/<do_not_forget_to_replace_these_file_name_place_holders_with_actual_file_names>
-    jupyternb/<you_can_also_add_multiple_ipynb_files_per_subsection>
+    jupyternb/02_analysis_with_r
