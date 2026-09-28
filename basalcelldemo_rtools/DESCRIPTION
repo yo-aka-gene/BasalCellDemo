@@ -1,8 +1,9 @@
 Package: basalcelldemo
-Title: BasalCellDemo
-Version: 0.1.0
+Title: basalcelldemo
+Version: 0.0.1
 Authors@R: person("Yuji Okano", email = "yujiokano@keio.jp", role = c("aut", "cre"))
 Description: A demonstration of the BasalCell ecosystem through a simple scRNA-seq data analysis.
 Encoding: UTF-8
 License: UNLICENSED
 URL: https://basalcelldemo.readthedocs.io/en/latest/r_api/
+Config/roxygen2/version: 8.0.0
