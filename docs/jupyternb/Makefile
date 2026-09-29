@@ -1,8 +1,8 @@
 PROJECT_ROOT := ../..
 JUPYTER := $(PROJECT_ROOT)/.venv/bin/jupyter
 
-PY_KERNEL := BasalCellDemo_py
-R_KERNEL := BasalCellDemo_r
+PY_KERNEL := basalcelldemo_py
+R_KERNEL := basalcelldemo_r
 
 ENV_SUFFIX := $(shell hostname -s | sed 's/[^A-Za-z0-9._-]/_/g')
 TEMPLATES := $(sort $(wildcard *_TEMPLATE.ipynb))
