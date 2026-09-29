@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Analyses Code &mdash; BasalCellDemo 0.0.1 documentation</title>
+  <title>Analysis Workflows &mdash; BasalCellDemo 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=c83e6b79" />
@@ -48,13 +48,46 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Analysis Code Gallery</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Analyses Code</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Analysis Workflows</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#preprocessing-and-automated-annotation-with-python">Preprocessing and Automated Annotation with Python</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="jupyternb/01_preprocessing_with_python.html">01: Preprocessing the PBMC 3k dataset with Python</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#manual-annotation-and-label-visualization-with-r">Manual Annotation and Label Visualization with R</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="jupyternb/02_analysis_with_r.html">02: GO Analysis with R</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#cross-infrastructure-workspace-portability">Cross-infrastructure Workspace Portability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#acrest-gpu1">acrest-gpu1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-workflow">Python workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="jupyternb/01_preprocessing_with_python_acrest-gpu1.html">01: Preprocessing the PBMC 3k dataset with Python</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#r-workflow">R workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="jupyternb/02_analysis_with_r_acrest-gpu1.html">02: GO Analysis with R</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#shirokane-hww04">SHIROKANE (hww04)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Python workflow</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">R workflow</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#limits-of-environment-reconstruction">Limits of Environment Reconstruction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">acrest-gpu1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="jupyternb/03_gse223065_acrest-gpu1.html">03: Python-based Preprocessing Routine Reproducibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">SHIROKANE (hww04)</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -79,7 +112,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Analyses Code</li>
+      <li class="breadcrumb-item active">Analysis Workflows</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/notebooks.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -89,8 +122,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
 
-  <section id="analyses-code">
-<h1>Analyses Code<a class="headerlink" href="#analyses-code" title="Link to this heading"></a></h1>
+  <section id="analysis-workflows">
+<h1>Analysis Workflows<a class="headerlink" href="#analysis-workflows" title="Link to this heading"></a></h1>
+<p>BasalCellDemo demonstrates a heterogeneous bioinformatics workflow in which
+Python- and R-based analyses are managed within a single project environment.</p>
 <section id="preprocessing-and-automated-annotation-with-python">
 <h2>Preprocessing and Automated Annotation with Python<a class="headerlink" href="#preprocessing-and-automated-annotation-with-python" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
@@ -110,6 +145,81 @@
   <div><img alt="" src="./_images/jupyternb_02_analysis_with_r_15_2.png"></div>
   <div>02: GO Analysis with R</div>
 </a>
+</div>
+</div>
+</section>
+</section>
+<section id="cross-infrastructure-workspace-portability">
+<h1>Cross-infrastructure Workspace Portability<a class="headerlink" href="#cross-infrastructure-workspace-portability" title="Link to this heading"></a></h1>
+<p>The following notebooks demonstrate reconstruction and execution of the same
+BasalCellDemo workflow on two independent Linux computing infrastructures.
+The project was transferred through Git and reconstructed from the same
+project specification, including both Python and R analysis environments.</p>
+<section id="acrest-gpu1">
+<h2>acrest-gpu1<a class="headerlink" href="#acrest-gpu1" title="Link to this heading"></a></h2>
+<section id="python-workflow">
+<h3>Python workflow<a class="headerlink" href="#python-workflow" title="Link to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<div class="nbsphinx-gallery">
+<a class="reference internal" href="jupyternb/01_preprocessing_with_python_acrest-gpu1.html">
+  <div><img alt="" src="./_images/jupyternb_01_preprocessing_with_python_acrest-gpu1_51_1.png"></div>
+  <div>01: Preprocessing the PBMC 3k dataset with Python</div>
+</a>
+</div>
+</div>
+</section>
+<section id="r-workflow">
+<h3>R workflow<a class="headerlink" href="#r-workflow" title="Link to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<div class="nbsphinx-gallery">
+<a class="reference internal" href="jupyternb/02_analysis_with_r_acrest-gpu1.html">
+  <div><img alt="" src="./_images/jupyternb_02_analysis_with_r_acrest-gpu1_17_2.png"></div>
+  <div>02: GO Analysis with R</div>
+</a>
+</div>
+</div>
+</section>
+</section>
+<section id="shirokane-hww04">
+<h2>SHIROKANE (hww04)<a class="headerlink" href="#shirokane-hww04" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Python workflow<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<div class="nbsphinx-gallery">
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>R workflow<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<div class="nbsphinx-gallery">
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="limits-of-environment-reconstruction">
+<h1>Limits of Environment Reconstruction<a class="headerlink" href="#limits-of-environment-reconstruction" title="Link to this heading"></a></h1>
+<p>Reconstructing a software environment does not necessarily guarantee
+numerically identical analytical outputs across computing hosts. The
+following notebooks apply the same GBM single-cell RNA-seq workflow to
+GSE223065 after reconstructing the BasalCellDemo environment on each
+infrastructure.</p>
+<section id="id3">
+<h2>acrest-gpu1<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<div class="nbsphinx-gallery">
+<a class="reference internal" href="jupyternb/03_gse223065_acrest-gpu1.html">
+  <div><img alt="" src="./_images/jupyternb_03_gse223065_acrest-gpu1_23_0.png"></div>
+  <div>03: Python-based Preprocessing Routine Reproducibility</div>
+</a>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>SHIROKANE (hww04)<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<div class="nbsphinx-gallery">
 </div>
 </div>
 </section>
