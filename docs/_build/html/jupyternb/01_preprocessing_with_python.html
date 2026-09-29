@@ -134,7 +134,7 @@
 <li><p>Downloading the PBMC3k dataset from <a class="reference external" href="https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0">10x Genomics</a>’s source</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
@@ -143,7 +143,7 @@
 <span class="nv">FILE_NAME</span><span class="o">=</span><span class="s2">"pbmc3k"</span>
 <span class="nv">SRC</span><span class="o">=</span><span class="s2">"http://cf.10xgenomics.com/samples/cell-exp/1.1.0/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz"</span>
 
-mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$DATA</span><span class="s2">=DIR"</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$DATA_DIR</span><span class="s2">"</span>
 
 <span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$DATA_DIR</span><span class="s2">/</span><span class="nv">$FILE_NAME</span><span class="s2">/matrix.mtx"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$FILE_NAME</span><span class="s2"> data already exists. Skipping download"</span>
