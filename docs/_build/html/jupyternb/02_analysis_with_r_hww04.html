@@ -24,8 +24,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="01: Preprocessing the PBMC 3k dataset with Python" href="01_preprocessing_with_python_hww04.html" />
-    <link rel="prev" title="01: Preprocessing the PBMC 3k dataset with Python" href="01_preprocessing_with_python_acrest-gpu1.html" />
+    <link rel="next" title="03: Python-based Preprocessing Routine Reproducibility" href="03_gse223065_acrest-gpu1.html" />
+    <link rel="prev" title="01: Preprocessing the PBMC 3k dataset with Python" href="01_preprocessing_with_python_hww04.html" />
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,9 +52,10 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Analysis Workflows</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../notebooks.html#cross-infrastructure-workspace-portability">Cross-infrastructure Workspace Portability</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../notebooks.html#acrest-gpu1">acrest-gpu1</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../notebooks.html#python-workflow">Python workflow</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../notebooks.html#r-workflow">R workflow</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../notebooks.html#acrest-gpu1">acrest-gpu1</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../notebooks.html#shirokane-hww04">SHIROKANE (hww04)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../notebooks.html#id1">Python workflow</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../notebooks.html#id2">R workflow</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">02: GO Analysis with R</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#0.-Execution-Environment-Summary">0. Execution Environment Summary</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#1.-Manual-Annotation">1. Manual Annotation</a></li>
@@ -66,7 +67,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks.html#shirokane-hww04">SHIROKANE (hww04)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks.html#limits-of-environment-reconstruction">Limits of Environment Reconstruction</a></li>
@@ -93,7 +93,7 @@
           <li class="breadcrumb-item"><a href="../notebooks.html">Analysis Workflows</a></li>
       <li class="breadcrumb-item active">02: GO Analysis with R</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/jupyternb/02_analysis_with_r_acrest-gpu1.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/jupyternb/02_analysis_with_r_hww04.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -135,9 +135,9 @@
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 === Execution Start ===
-Timestamp (UTC): 2026-09-29T20:14:59Z
-Hostname:        acrest-gpu1
-OS:              Ubuntu 22.04.5 LTS
+Timestamp (UTC): 2026-09-29T20:34:15Z
+Hostname:        hww04
+OS:              Red Hat Enterprise Linux 8.8 (Ootpa)
 =======================
 </pre></div></div>
 </div>
@@ -257,7 +257,7 @@ Warning message:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/jupyternb_02_analysis_with_r_acrest-gpu1_7_1.png" class="no-scaled-link" height="720" src="../_images/jupyternb_02_analysis_with_r_acrest-gpu1_7_1.png" width="480" />
+<img alt="../_images/jupyternb_02_analysis_with_r_hww04_7_1.png" class="no-scaled-link" height="720" src="../_images/jupyternb_02_analysis_with_r_hww04_7_1.png" width="480" />
 </div>
 </div>
 </section>
@@ -511,13 +511,13 @@ Set `ht_opt$message = FALSE` to turn off this message.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area rendered_html docutils container">
-<strong>agg_record_34800272116060:</strong> 2</div>
+<strong>agg_record_3874e47023e825:</strong> 2</div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/jupyternb_02_analysis_with_r_acrest-gpu1_17_2.png" class="no-scaled-link" height="540" src="../_images/jupyternb_02_analysis_with_r_acrest-gpu1_17_2.png" width="720" />
+<img alt="../_images/jupyternb_02_analysis_with_r_hww04_17_2.png" class="no-scaled-link" height="540" src="../_images/jupyternb_02_analysis_with_r_hww04_17_2.png" width="720" />
 </div>
 </div>
 </section>
@@ -548,21 +548,21 @@ Set `ht_opt$message = FALSE` to turn off this message.
 ============================================================
 Execution Environment
 ============================================================
-Timestamp (UTC):         2026-09-29T20:16:27Z
-Hostname:                acrest-gpu1
-FQDN:                    acrest-gpu1
-OS:                      Ubuntu 22.04.5 LTS
-Kernel:                  6.8.0-124-generic
+Timestamp (UTC):         2026-09-29T20:35:33Z
+Hostname:                hww04
+FQDN:                    hww04i
+OS:                      Red Hat Enterprise Linux 8.8 (Ootpa)
+Kernel:                  5.14.0-570.55.1.el9_6.x86_64
 Architecture:            x86_64
-CPU model:               Intel(R) Xeon(R) Platinum 8352Y CPU @ 2.20GHz
+CPU model:               INTEL(R) XEON(R) GOLD 6542Y
 CPU sockets:             2
-Cores / socket:          32
+Cores / socket:          24
 Threads / core:          1
-Logical CPUs:            64
-System memory:           503.5 GiB
-System vendor:           TYAN
-System model:            B7122T75V8E4HR-2T-N
-GPU(s):                  NVIDIA GeForce RTX 4090, 24564 MiB, 595.80;NVIDIA GeForce RTX 4090, 24564 MiB, 595.80
+Logical CPUs:            48
+System memory:           1006.9 GiB
+System vendor:           XFUSION
+System model:            2288H V7
+GPU(s):                  None / nvidia-smi unavailable
 ============================================================
 </pre></div></div>
 </div>
@@ -573,8 +573,8 @@ GPU(s):                  NVIDIA GeForce RTX 4090, 24564 MiB, 595.80;NVIDIA GeFor
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="01_preprocessing_with_python_acrest-gpu1.html" class="btn btn-neutral float-left" title="01: Preprocessing the PBMC 3k dataset with Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="01_preprocessing_with_python_hww04.html" class="btn btn-neutral float-right" title="01: Preprocessing the PBMC 3k dataset with Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="01_preprocessing_with_python_hww04.html" class="btn btn-neutral float-left" title="01: Preprocessing the PBMC 3k dataset with Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="03_gse223065_acrest-gpu1.html" class="btn btn-neutral float-right" title="03: Python-based Preprocessing Routine Reproducibility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
