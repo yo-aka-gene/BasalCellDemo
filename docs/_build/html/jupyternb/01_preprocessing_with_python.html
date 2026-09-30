@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="02: GO Analysis with R" href="02_analysis_with_r.html" />
-    <link rel="prev" title="Analyses Code" href="../notebooks.html" />
+    <link rel="prev" title="Analysis Workflows" href="../notebooks.html" />
 </head>
 
 <body class="wy-body-for-nav">
@@ -50,7 +50,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Analysis Code Gallery</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../notebooks.html">Analyses Code</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../notebooks.html">Analysis Workflows</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../notebooks.html#preprocessing-and-automated-annotation-with-python">Preprocessing and Automated Annotation with Python</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">01: Preprocessing the PBMC 3k dataset with Python</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Reference">Reference</a></li>
@@ -80,6 +80,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../notebooks.html#manual-annotation-and-label-visualization-with-r">Manual Annotation and Label Visualization with R</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html#cross-infrastructure-workspace-portability">Cross-infrastructure Workspace Portability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html#limits-of-environment-reconstruction">Limits of Environment Reconstruction</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Auxiliary Python Scripts</span></p>
 <ul>
@@ -100,7 +102,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../notebooks.html">Analyses Code</a></li>
+          <li class="breadcrumb-item"><a href="../notebooks.html">Analysis Workflows</a></li>
       <li class="breadcrumb-item active">01: Preprocessing the PBMC 3k dataset with Python</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/jupyternb/01_preprocessing_with_python.ipynb.txt" rel="nofollow"> View page source</a>
@@ -134,7 +136,7 @@
 <li><p>Downloading the PBMC3k dataset from <a class="reference external" href="https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0">10x Genomics</a>’s source</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
@@ -143,7 +145,7 @@
 <span class="nv">FILE_NAME</span><span class="o">=</span><span class="s2">"pbmc3k"</span>
 <span class="nv">SRC</span><span class="o">=</span><span class="s2">"http://cf.10xgenomics.com/samples/cell-exp/1.1.0/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz"</span>
 
-mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$DATA</span><span class="s2">=DIR"</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$DATA_DIR</span><span class="s2">"</span>
 
 <span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$DATA_DIR</span><span class="s2">/</span><span class="nv">$FILE_NAME</span><span class="s2">/matrix.mtx"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$FILE_NAME</span><span class="s2"> data already exists. Skipping download"</span>
@@ -913,7 +915,7 @@ pbmc3k data already exists. Skipping download
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../notebooks.html" class="btn btn-neutral float-left" title="Analyses Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../notebooks.html" class="btn btn-neutral float-left" title="Analysis Workflows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="02_analysis_with_r.html" class="btn btn-neutral float-right" title="02: GO Analysis with R" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

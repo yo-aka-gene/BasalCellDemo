@@ -194,3 +194,4 @@ renv/.cache/
 *.ipc
 *.feather
 # *.pkl
+*.gz
